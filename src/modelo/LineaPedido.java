@@ -48,6 +48,10 @@ public class LineaPedido implements Cobrable {
         return "Sin estación";
     }
 
+
+
+    
+
     public String obtenerComanda() {
         String texto = cantidad + " x " + producto.getNombre();
         for (Adicion a : adiciones) {

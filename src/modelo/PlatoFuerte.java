@@ -34,6 +34,11 @@ public class PlatoFuerte extends ProductoMenu {
     public String getCategoria() {
         return "Plato fuerte";
     }
+    
+     @Override
+    public String getEstacion() {
+        return "Cocina";
+    }
 
     @Override
     public boolean esVegetariano() {
