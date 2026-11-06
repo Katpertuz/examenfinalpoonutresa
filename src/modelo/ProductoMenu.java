@@ -5,7 +5,7 @@ public abstract class ProductoMenu implements Identificable, Cobrable {
     private final String codigo;
     private String nombre;
     private double precioBase;
-    private static int stock;
+    private int stock;
     private boolean disponible;
 
     public ProductoMenu(String codigo, String nombre, double precioBase, int stock) {
@@ -45,12 +45,12 @@ public abstract class ProductoMenu implements Identificable, Cobrable {
 
     /** Permite sacar un producto de la carta del día o volverlo a ofrecer. */
     public void setDisponible(boolean disponible) {
-        disponible = disponible;
+        this.disponible = disponible;
     }
 
     /** Se puede vender si está disponible, la cantidad es válida y alcanza el stock. */
     public boolean puedeVender(int cantidad) {
-        return disponible && cantidad > 0 && cantidad <= stock;
+         return disponible && cantidad > 0 && cantidad <= stock;
     }
 
     /** Descuenta del stock SOLO si se puede vender. */

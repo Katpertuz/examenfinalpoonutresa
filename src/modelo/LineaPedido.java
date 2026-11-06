@@ -31,7 +31,7 @@ public class LineaPedido implements Cobrable {
     public double calcularPrecio() {
         double sumaAdiciones = 0;
         for (Adicion a : adiciones) {
-            sumaAdiciones = a.calcularPrecio();
+            sumaAdiciones += a.calcularPrecio();
         }
         return (producto.calcularPrecio() + sumaAdiciones) * cantidad;
     }

@@ -53,7 +53,7 @@ public class Pedido implements Identificable, Cobrable {
 
     /** Plan familiar: 10 % si son 4 o más personas Y el subtotal llega a $150.000. */
     public double calcularDescuento() {
-        if (personas >= 4 || calcularSubtotal() >= 150000) {
+        if (personas >= 4 && calcularSubtotal() >= 150000) {
             return calcularSubtotal() * 0.10;
         }
         return 0;
@@ -61,13 +61,13 @@ public class Pedido implements Identificable, Cobrable {
 
     /** Impoconsumo del 8 % sobre lo que queda después del descuento. */
     public double calcularImpoconsumo() {
-        return calcularSubtotal() * 0.08;
+        return (calcularSubtotal() - calcularDescuento()) * 0.08;
     }
 
     /** Propina voluntaria del 10 %, después del descuento y SIN incluir el impoconsumo. */
     public double calcularPropina() {
         if (!aceptaPropina) {
-            return 0;
+            return (calcularSubtotal() - calcularDescuento()) * 0.10;
         }
         return (calcularSubtotal() - calcularDescuento() + calcularImpoconsumo()) * 0.10;
     }
@@ -95,9 +95,9 @@ public class Pedido implements Identificable, Cobrable {
         for (LineaPedido linea : lineas) {
             if (!linea.getProducto().esVegetariano()) {
                 return false;
-            } else {
-                return true;
-            }
+            } 
+                return false;
+            
         }
         return true;
     }

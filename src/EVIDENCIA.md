@@ -26,6 +26,16 @@
 ## 2. Errores de lógica corregidos
 | # | Archivo y método | Qué hacía mal | Pista (fila de la tabla) | Cómo lo corregimos |
 |---|------------------|---------------|--------------------------|--------------------|
+| 1 | ProductoMenu (Atributos) | El stock era compartido (static) para todos | Stock de la carta en 5 | Se eliminó el modificador 'static' de la variable stock. |
+| 2 | Bebida.calcularPrecio() | No cobraba recargo por tamaño grande | Jugo mandarina a $9000 | Se agregó 'if (ml >= 500) precio += 2500' |
+| 3 | Brunch.buscarProducto() | Sensible a mayúsculas | Buscar pan-001 fallaba | Se reemplazó equals() por equalsIgnoreCase() |
+| 4 | ProductoMenu.vender() | Vendía sin revisar el límite del stock | Arepa vendida sin stock | Se añadió la validación 'cantidad <= stock' |
+| 5 | LineaPedido.calcularPrecio() | Reemplazaba el costo de las adiciones en vez de sumarlo | Subtotales erróneos | Se cambió '=' por '+=' en el ciclo de adiciones |
+| 6 | Pedido.esVegetariano() | Retornaba true al primer producto vegetariano | Pedido amigos era true | Se validó que ningún producto sea no vegetariano (!esVegetariano) |
+| 7 | Brunch.abrirPedido() | Exigía que la mesa tuviera capacidad exacta | Mesa 3 rechazaba 2 pax | Se cambió '==' por '>=' al comparar capacidad vs personas |
+| 8 | Pedido.calcularDescuento()| Daba descuento familiar a cuentas menores a 150k | Descuento con 114k | Se añadió '&& calcularSubtotal() >= 150000' |
+| 9 | Pedido.calcularTiempo...()| Retornaba 0 como tiempo estimado | Tiempos en 0 min | Se aplicó Math.max() para hallar la mayor preparación |
+| 10| Brunch.cerrarPedido() | No marcaba la mesa como desocupada | Mesa 3 no quedó libre | Se agregó pedido.getMesa().desocupar() al cerrar |
 (las 10 filas)
 
 ## 3. Revisión de código
