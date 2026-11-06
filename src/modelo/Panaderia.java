@@ -17,7 +17,7 @@ public class Panaderia extends ProductoMenu {
     /** Precio de la porción: el precio base es por unidad. */
     @Override
     public double calcularPrecio() {
-        return precioBase * unidades;
+        return getPrecioBase() * unidades;
     }
 
     /** Lo recién horneado tarda 12 minutos; lo de vitrina, 3. */
@@ -28,7 +28,7 @@ public class Panaderia extends ProductoMenu {
 
     @Override
     public String getCategoria() {
-        return "Panadería;
+        return "Panadería";
     }
 
     @Override

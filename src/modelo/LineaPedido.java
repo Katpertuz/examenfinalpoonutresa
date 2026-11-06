@@ -9,7 +9,7 @@ public class LineaPedido implements Cobrable {
     private final ArrayList<Adicion> adiciones;
 
     public LineaPedido(ProductoMenu producto, int cantidad) {
-        if (producto = null) {
+        if (producto == null) {
             throw new IllegalArgumentException("La línea necesita un producto");
         }
         this.producto = producto;
@@ -28,7 +28,7 @@ public class LineaPedido implements Cobrable {
 
     /** CADA unidad lleva sus adiciones: (precio del producto + adiciones) × cantidad. */
     @Override
-    double calcularPrecio() {
+    public double calcularPrecio() {
         double sumaAdiciones = 0;
         for (Adicion a : adiciones) {
             sumaAdiciones = a.calcularPrecio();

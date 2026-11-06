@@ -9,7 +9,7 @@ import modelo.Pedido;
 import modelo.PlatoFuerte;
 import modelo.ProductoMenu;
 import servicio.Brunch;
-
+import modelo.Bebida;
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== 1. Carta del domingo ===");
@@ -41,7 +41,7 @@ public class Main {
         System.out.println("Se acabó el chócolo. ¿Se puede vender 1 arepa? " + arepa.puedeVender(1));
 
         System.out.println("\n=== 3. Mesas ===");
-        brunch.agregarMesa(new Mesa("1", 2));
+        brunch.agregarMesa(new Mesa(1, 2)); //quitar comillas
         brunch.agregarMesa(new Mesa(2, 4));
         brunch.agregarMesa(new Mesa(3, 6));
         Mesa mesaTres = brunch.buscarMesa(3);
